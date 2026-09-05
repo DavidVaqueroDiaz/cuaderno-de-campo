@@ -76,9 +76,8 @@
 
   .mainnav{
     background:var(--chrome-2);border-bottom:1px solid var(--chrome-line);
-    padding:0 20px;display:flex;gap:2px;position:sticky;top:58px;z-index:75;overflow-x:auto;
+    padding:0 20px;display:flex;gap:2px;position:sticky;top:58px;z-index:75;flex-wrap:wrap;
   }
-  .mainnav::-webkit-scrollbar{height:0}
   .navitem{position:relative;flex-shrink:0}
   .navbtn{
     background:none;border:none;padding:0 13px;height:42px;font-size:13.5px;font-weight:500;
@@ -981,6 +980,11 @@ $$(".navitem[data-menu]").forEach(function(it){
     ev.stopPropagation();
     var open=b.getAttribute("aria-expanded")==="true";
     closeMenus(it); b.setAttribute("aria-expanded",open?"false":"true"); d.hidden=open;
+    if(!open && !d.classList.contains("right")){
+      d.style.left="0"; d.style.right="auto";
+      var r=d.getBoundingClientRect();
+      if(r.right > window.innerWidth-8){ d.style.left="auto"; d.style.right="0"; }
+    }
   });
 });
 document.addEventListener("click",function(){closeMenus(null);});
