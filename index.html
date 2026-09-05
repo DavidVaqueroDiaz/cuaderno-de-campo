@@ -129,8 +129,8 @@
   .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
   .g2{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
   .g2e{grid-template-columns:repeat(2,minmax(0,1fr))}
-  @media (max-width:980px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g2,.g2e{grid-template-columns:1fr}}
-  @media (max-width:560px){.g4{grid-template-columns:1fr}}
+  @media (max-width:980px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g2,.g2e{grid-template-columns:minmax(0,1fr)}}
+  @media (max-width:560px){.g4{grid-template-columns:minmax(0,1fr)}}
 
   .tile{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:15px 16px}
   .tile .lbl{font-size:11.5px;font-weight:500;color:var(--muted);margin:0 0 8px}
@@ -187,7 +187,7 @@
   @media (max-width:820px){.stepper{flex-wrap:wrap}.stepper .st{flex:1 1 46%}}
 
   .picker{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
-  @media (max-width:820px){.picker{grid-template-columns:1fr}}
+  @media (max-width:820px){.picker{grid-template-columns:minmax(0,1fr)}}
   .col{border-right:1px solid var(--border);min-height:300px}
   .col:last-child{border-right:none}
   .col .ch{font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);padding:11px 16px;border-bottom:1px solid var(--border);background:var(--surface-2)}
@@ -203,7 +203,7 @@
 
   /* editor */
   .editor{display:grid;grid-template-columns:minmax(0,272px) minmax(0,1fr);gap:16px}
-  @media (max-width:900px){.editor{grid-template-columns:1fr}}
+  @media (max-width:900px){.editor{grid-template-columns:minmax(0,1fr)}}
   .bi{display:flex;align-items:center;gap:10px;width:100%;background:none;border:none;text-align:left;padding:9px 14px;font-size:13px;color:var(--ink-2);border-bottom:1px solid var(--border)}
   .bi:last-child{border-bottom:none}
   .bi:hover{background:var(--surface-2)}
@@ -311,7 +311,7 @@
   .wizfoot{display:flex;gap:8px;align-items:center;padding:14px 16px;border-top:1px solid var(--border);flex-wrap:wrap}
   .wizfoot .hint{font-size:12.5px;color:var(--muted);flex:1;min-width:200px}
   .form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 18px;padding:16px}
-  @media (max-width:720px){.form{grid-template-columns:1fr}}
+  @media (max-width:720px){.form{grid-template-columns:minmax(0,1fr)}}
   .form .fg{display:flex;flex-direction:column;gap:5px;min-width:0}
   .form .fg.full{grid-column:1/-1}
   .form label{font-size:11.5px;font-weight:600;color:var(--ink-2);letter-spacing:.01em}
@@ -342,7 +342,7 @@
   .checklist .cl:last-child{border-bottom:none}
   .checklist .cl .nm{flex:1;min-width:0}
   .resumen{padding:16px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 22px;font-size:13.5px}
-  @media (max-width:720px){.resumen{grid-template-columns:1fr}}
+  @media (max-width:720px){.resumen{grid-template-columns:minmax(0,1fr)}}
   .resumen .ri{display:flex;gap:10px;border-bottom:1px solid var(--border);padding-bottom:9px}
   .resumen .ri .k{color:var(--muted);min-width:130px}
   .resumen .ri .v{font-weight:500;flex:1}
@@ -370,9 +370,22 @@
   .rpage .no{color:#9B2A26;font-weight:700}
   .rpage .imgph{height:118px;border:1px solid #DBDDDA;background:repeating-linear-gradient(135deg,#F8F9F7 0 9px,#EFF1EE 9px 18px);display:flex;align-items:center;justify-content:center;color:#9AA0A5;font-size:10.5px;margin:11px 0;text-align:center;padding:0 16px}
   .rpage .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
-  @media (max-width:640px){.rpage .two{grid-template-columns:1fr}}
+  @media (max-width:640px){.rpage .two{grid-template-columns:minmax(0,1fr)}}
   .rpage .sig{margin-top:14px;display:flex;gap:26px;align-items:flex-end}
   .rpage .sig .box{flex:1;border-top:1px solid #BFC3BF;padding-top:5px;color:#666;font-size:10.5px}
+
+  /* ============ FICHA DE EQUIPO ============ */
+  .equipo{padding:15px 16px;border-bottom:1px solid var(--border)}
+  .eq-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:11px}
+  .eq-h > div{flex:1;min-width:180px}
+  .eq-h b{display:block;font-size:13.5px;font-weight:600}
+  .eq-h span{font-size:12.5px;color:var(--muted)}
+  .kv2{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:6px 14px;margin:0;font-size:12.5px}
+  .kv2 dt{color:var(--muted);white-space:nowrap}
+  .kv2 dd{margin:0;font-weight:500;font-variant-numeric:tabular-nums}
+  #cotas th,#cotas td{padding:8px 11px}
+  #cotas td.num{text-align:right}
+  @media (max-width:700px){.kv2{grid-template-columns:auto minmax(0,1fr)}}
 
   /* ============ MOVIL ============ */
   .rmodal,.modal{min-width:0;max-width:min(800px,100%)}
@@ -382,7 +395,9 @@
   .backdrop{overscroll-behavior:contain}
 
   @media (max-width:820px){
-    .topbar{height:auto;min-height:54px;padding:9px 14px;gap:10px}
+    .topbar{height:auto;min-height:54px;padding:9px 14px;gap:10px;flex-wrap:wrap}
+    .brand{min-width:0;flex:1 1 auto}
+    .brand .app{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .topsearch{display:none}
     .brand img{height:21px}
     .brand .app{font-size:12.5px}
@@ -393,6 +408,8 @@
   }
 
   @media (max-width:640px){
+    .rpage .tcotas .desc,#tbl-cotas .desc,#cotas thead th.desc{display:none}
+    #cotas .tw table{min-width:0 !important}
     .backdrop{padding:12px 8px;align-items:stretch}
     .rmodal{max-height:calc(100vh - 24px)}
     .rmodal .mb{padding:12px}
@@ -738,8 +755,9 @@
           <div class="ri"><span class="k">Tipo de medición</span><span class="v">Final</span></div>
           <div class="ri"><span class="k">Equipo</span><span class="v">Leica Absolute Tracker AT401</span></div>
           <div class="ri"><span class="k">Norma</span><span class="v">ISO 1101</span></div>
-          <div class="ri"><span class="k">Bloques</span><span class="v">9, con 1 fuera de tolerancia</span></div>
-          <div class="ri"><span class="k">Anexos</span><span class="v">Certificado de calibración</span></div>
+          <div class="ri"><span class="k">Bloques</span><span class="v">10, con 2 desviaciones fuera de tolerancia</span></div>
+          <div class="ri"><span class="k">Cotas verificadas</span><span class="v">10 contra el plano 2200-A rev. C</span></div>
+          <div class="ri"><span class="k">Anexos</span><span class="v">Certificado de calibración C-25/4187</span></div>
         </div>
         <div class="wizfoot">
           <span class="hint">Se generaría el PDF con el formato de la empresa, y quedaría archivado bajo esta máquina.</span>
@@ -764,6 +782,19 @@
           <div class="card-h"><h2 id="blk-title">Planitud de bancada</h2><span class="pill info" id="blk-src"></span><span class="note" id="blk-norm"></span></div>
           <div class="card-b">
             <div id="fields"></div>
+            <div id="cotas" hidden style="margin-top:16px">
+              <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:9px">
+                <h3 style="font-size:13px;font-weight:600;margin:0">Cotas verificadas</h3>
+                <span style="font-size:12px;color:var(--muted)">Valores en milímetros. Nominal y tolerancia según el plano 2200-A rev. C</span>
+              </div>
+              <div class="tw" style="border:1px solid var(--border);border-radius:5px">
+                <table style="min-width:560px">
+                  <thead><tr><th>Cota</th><th class="desc">Descripción</th><th>Nominal</th><th>Tolerancia</th><th>Medido</th><th class="desc">Desviación</th><th>Estado</th></tr></thead>
+                  <tbody id="tbl-cotas"></tbody>
+                </table>
+              </div>
+            </div>
+
             <div class="srcnote">
               <span><i style="background:var(--good-tint);border:1px solid var(--good-line)"></i> Importado del archivo de medición</span>
               <span><i style="background:#EDF3FC;border:1px solid #C9DBF4"></i> Escrito por el técnico</span>
@@ -877,10 +908,39 @@
       <div class="viewhead"><div><p class="crumb">Ajustes</p><h1>Ajustes</h1><p class="sub">Configuración de la empresa y del informe. Datos de ejemplo.</p></div></div>
       <div class="grid g2e">
         <div class="card">
-          <div class="card-h"><h2>Equipos de medida</h2><span class="note">Certificados vigentes</span></div>
-          <div class="setrow"><div class="st"><b>Láser tracker principal</b><span>Certificado de calibración vigente, se adjunta solo a cada informe</span></div><span class="pill ok"><span class="dotm"></span> Vigente</span></div>
-          <div class="setrow"><div class="st"><b>Estación auxiliar</b><span>Caduca en 3 meses</span></div><span class="pill warn"><span class="dotm"></span> Renovar</span></div>
-          <div class="setrow"><div class="st"><b>Adjuntar certificado como anexo</b><span>En todos los informes generados</span></div><button class="toggle" aria-label="Activado"></button></div>
+          <div class="card-h"><h2>Equipos de medida</h2><span class="note">Los datos pasan solos a la portada del informe</span></div>
+          <div class="equipo">
+            <div class="eq-h">
+              <div><b>Láser tracker</b><span>Leica Absolute Tracker AT401</span></div>
+              <span class="pill ok"><span class="dotm"></span> Calibración vigente</span>
+            </div>
+            <dl class="kv2">
+              <dt>Número de serie</dt><dd>412903</dd>
+              <dt>Incertidumbre</dt><dd>± (15 µm + 6 µm/m)</dd>
+              <dt>Volumen de trabajo</dt><dd>320 m</dd>
+              <dt>Certificado</dt><dd>C-25/4187</dd>
+              <dt>Fecha de calibración</dt><dd>18/11/2025</dd>
+              <dt>Próxima calibración</dt><dd>18/11/2026</dd>
+              <dt>Trazabilidad</dt><dd>Patrones nacionales</dd>
+              <dt>Compensación ambiental</dt><dd>Automática</dd>
+            </dl>
+          </div>
+          <div class="equipo">
+            <div class="eq-h">
+              <div><b>Nivel electrónico de precisión</b><span>Equipo auxiliar de nivelación</span></div>
+              <span class="pill warn"><span class="dotm"></span> Caduca en 3 meses</span>
+            </div>
+            <dl class="kv2">
+              <dt>Número de serie</dt><dd>NE-08812</dd>
+              <dt>Resolución</dt><dd>0,001 mm/m</dd>
+              <dt>Incertidumbre</dt><dd>± 0,004 mm/m</dd>
+              <dt>Certificado</dt><dd>C-24/9930</dd>
+              <dt>Fecha de calibración</dt><dd>02/12/2024</dd>
+              <dt>Próxima calibración</dt><dd>02/12/2026</dd>
+            </dl>
+          </div>
+          <div class="setrow"><div class="st"><b>Adjuntar el certificado como anexo</b><span>En todos los informes generados</span></div><button class="toggle" aria-label="Activado"></button></div>
+          <div class="setrow"><div class="st"><b>Avisar 60 días antes de que caduque</b><span>Para no medir con un equipo fuera de calibración</span></div><button class="toggle" aria-label="Activado"></button></div>
         </div>
         <div class="card">
           <div class="card-h"><h2>Formato del informe</h2></div>
@@ -980,7 +1040,22 @@ var ARBOL={
 var BLOQUES=[
  {n:"Portada y condiciones",s:"done"},{n:"Objeto de la medición",s:"done"},{n:"Sistema de referencia",s:"done"},
  {n:"Planitud de bancada",s:""},{n:"Rectitud de guía longitudinal",s:""},{n:"Paralelismo entre guías",s:""},
- {n:"Perpendicularidad de husillo",s:""},{n:"Nivelación general",s:""},{n:"Conclusiones y recomendaciones",s:""}
+ {n:"Perpendicularidad de husillo",s:""},{n:"Nivelación general",s:""},{n:"Control de cotas",s:""},
+ {n:"Conclusiones y recomendaciones",s:""}
+];
+
+/* cotas con nominal, tolerancia, medido y veredicto */
+var COTAS=[
+ ["C-01","Distancia entre guías","420,000","± 0,050","420,032","+0,032","ok","Dentro"],
+ ["C-02","Altura de puntos sobre bancada","260,000","± 0,040","259,971","−0,029","ok","Dentro"],
+ ["C-03","Diámetro de alojamiento del cabezal","180,000","+0,025 / 0","180,018","+0,018","ok","Dentro"],
+ ["C-04","Distancia cabezal a contrapunto","2.200,000","± 0,150","2.200,094","+0,094","ok","Dentro"],
+ ["C-05","Anchura de la guía en V","85,000","± 0,030","85,041","+0,041","crit","Fuera"],
+ ["C-06","Altura de la guía lateral","112,000","± 0,040","111,978","−0,022","ok","Dentro"],
+ ["C-07","Separación del husillo a la guía","315,000","± 0,060","315,012","+0,012","ok","Dentro"],
+ ["C-08","Cota de referencia de amarre","640,000","± 0,080","639,943","−0,057","ok","Dentro"],
+ ["C-09","Voladizo del contrapunto","145,000","± 0,050","145,036","+0,036","ok","Dentro"],
+ ["C-10","Altura del carro transversal","198,000","± 0,050","198,061","+0,061","warn","Límite"]
 ];
 var CAMPOS={
  "Planitud de bancada":{norma:"Según ISO 1101",f:[
@@ -1004,6 +1079,22 @@ var CAMPOS={
   ["Observaciones del técnico","","Pendiente","empty"]],
   t:"El paralelismo entre la guía en V y la referencia presenta 0,05 mm en el plano horizontal y 0,12 mm en el vertical. El plano vertical supera la tolerancia de 0,10 mm, por lo que se recomienda corregir el apoyo antes de la puesta en servicio.",
   t2:"Se han obtenido 0,05 mm de desviación horizontal y 0,12 mm vertical. Este último excede la tolerancia de 0,10 mm; procede corregir el apoyo antes de poner la máquina en servicio."},
+ "Perpendicularidad de husillo":{norma:"Según ISO 1101",f:[
+  ["Entidad de referencia","","PLANO_BANCADA_A","auto"],["Entidad comparada","","EJE_HUSILLO","auto"],
+  ["Longitud de comprobación","mm","300","auto"],["Tolerancia admisible","mm","0,08","man"],
+  ["Desviación medida","mm","0,06","auto"],["Ángulo respecto a la referencia","grados","90,011","auto"],
+  ["Resultado","calculado contra la tolerancia","DENTRO","auto"],["Observaciones del técnico","","Pendiente","empty"]],
+  t:"La perpendicularidad del eje del husillo respecto al plano de bancada presenta una desviación de 0,06 mm sobre 300 mm de comprobación, equivalente a 90,011 grados. Queda dentro de la tolerancia de 0,08 mm.",
+  t2:"Medido sobre 300 mm, el husillo forma 90,011 grados con la bancada, con una desviación de 0,06 mm. Cumple la tolerancia de 0,08 mm."},
+ "Control de cotas":{norma:"Cotas de fabricación del plano 2200-A rev. C",f:[
+  ["Cotas verificadas","","10","auto"],["Dentro de tolerancia","","8","auto"],
+  ["En el límite","dentro pero por encima del 80 % de la tolerancia","1","auto"],
+  ["Fuera de tolerancia","","1","auto"],
+  ["Desviación máxima","mm","+0,094","auto"],["Plano de referencia","","2200-A rev. C","man"],
+  ["Observaciones del técnico","","Pendiente","empty"]],
+  tabla:"cotas",
+  t:"De las 10 cotas verificadas contra el plano 2200-A rev. C, 8 quedan dentro de tolerancia. La cota C-10 se sitúa en el límite superior admisible y la cota C-05, anchura de la guía en V, resulta fuera de tolerancia con +0,041 mm frente a los ± 0,030 mm especificados.",
+  t2:"Se han verificado 10 cotas contra el plano 2200-A rev. C. Ocho cumplen, la C-10 queda al límite y la C-05 excede la tolerancia especificada en 0,011 mm."},
  "Nivelación general":{norma:"Referida al plano horizontal",f:[
   ["Puntos de nivelación","","18","auto"],["Tolerancia admisible","mm","0,40","man"],
   ["Punto más alto","mm","+0,08","auto"],["Punto más bajo","mm","−0,26","auto"],
@@ -1014,7 +1105,7 @@ var CAMPOS={
 };
 var DEF={norma:"Bloque sin rellenar",f:[["Entidad medida","nombre en el software","Pendiente","empty"],["Tolerancia admisible","mm","Pendiente","empty"],["Desviación máxima","mm","Pendiente","empty"],["Desviación mínima","mm","Pendiente","empty"],["Resultado","","Pendiente","empty"]],
  t:"Este bloque todavía no se ha rellenado. En cuanto se importen los datos de la medición, la aplicación propondrá aquí el texto correspondiente.",t2:"Bloque pendiente de datos."};
-var LIB=["Planitud de superficie","Rectitud","Paralelismo","Perpendicularidad","Concentricidad","Nivelación general","Posición de puntos","Comparación con nominal","Redondez","Coaxialidad","Alineación de ejes","Repetibilidad de robot","Sistema de referencia","Foto anotada","Tabla de coordenadas","Condiciones ambientales","Conclusiones"];
+var LIB=["Planitud de superficie","Rectitud","Paralelismo","Perpendicularidad","Concentricidad","Nivelación general","Posición de puntos","Control de cotas","Comparación con nominal","Redondez","Coaxialidad","Alineación de ejes","Repetibilidad de robot","Sistema de referencia","Foto anotada","Tabla de coordenadas","Condiciones ambientales","Conclusiones"];
 
 /* ---------- utilidades ---------- */
 function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
@@ -1192,7 +1283,8 @@ var IMPORTADO=[
   ["EJE_HUSILLO","Perpendicularidad","0,06 mm","Perpendicularidad de husillo"],
   ["NIVEL_GENERAL","Nivelación","0,34 mm","Nivelación general"],
   ["SIST_REF_XYZ","Sistema de referencia","3 entidades","Sistema de referencia"],
-  ["PUNTOS_CONTROL","Coordenadas","24 puntos","Tabla de coordenadas"]
+  ["PUNTOS_CONTROL","Coordenadas","24 puntos","Tabla de coordenadas"],
+  ["COTAS_PLANO_2200A","Cotas con nominal","10 cotas","Control de cotas"]
 ];
 function simularImport(){
   var tb=$("#tbl-imp"); tb.innerHTML="";
@@ -1206,9 +1298,9 @@ function simularImport(){
     tb.appendChild(tr);
   });
   $("#imp-result").hidden=false;
-  BLOQUES.forEach(function(b,i){ if(i<7) b.s="done"; });
+  BLOQUES.forEach(function(b,i){ if(i<BLOQUES.length-1) b.s="done"; });
   renderBlocks(); renderWizChecklist();
-  toast("7 controles importados y asignados a sus bloques");
+  toast(IMPORTADO.length+" controles importados y asignados a sus bloques");
 }
 function renderWizChecklist(){
   var c=$("#wiz-checklist"); c.innerHTML="";
@@ -1257,6 +1349,23 @@ function renderFields(){
     if(r[1])k.appendChild(el("small",null,r[1]));
     row.appendChild(k);row.appendChild(el("div","v "+r[3],r[2]));c.appendChild(row);
   });
+  var cot=$("#cotas");
+  if(d.tabla==="cotas"){
+    cot.hidden=false;
+    var tb=$("#tbl-cotas");tb.innerHTML="";
+    COTAS.forEach(function(r){
+      var tr=el("tr");
+      tr.appendChild(el("td",null,r[0]));
+      tr.appendChild(el("td","desc",r[1]));
+      tr.appendChild(el("td","num",r[2]));
+      tr.appendChild(el("td","num",r[3]));
+      tr.appendChild(el("td","num",r[4]));
+      tr.appendChild(el("td","num desc",r[5]));
+      var td=el("td");td.appendChild(pill(r[6],r[7]));tr.appendChild(td);
+      tb.appendChild(tr);
+    });
+  } else { cot.hidden=true; }
+
   $("#gen-text").textContent = alt ? d.t2 : d.t;
   var th=$("#thumbs");th.innerHTML="";
   var caps=hasAuto?["Vista 3D de desviaciones","Foto anotada en planta"]:[];
@@ -1373,7 +1482,10 @@ var RPAGES=[
  '<tr><th>Temperatura</th><td>22,1 ºC</td></tr>'+
  '<tr><th>Humedad relativa</th><td>51,3 % rH</td></tr>'+
  '<tr><th>Presión atmosférica</th><td>1013,2 mb</td></tr>'+
- '<tr><th>Norma de referencia</th><td>ISO 1101</td></tr></table>'+
+ '<tr><th>Norma de referencia</th><td>ISO 1101</td></tr>'+
+ '<tr><th>Certificado de calibración</th><td>C-25/4187, de 18/11/2025. Próxima calibración: 18/11/2026</td></tr>'+
+ '<tr><th>Trazabilidad</th><td>Patrones nacionales</td></tr>'+
+ '<tr><th>Plano de referencia</th><td>2200-A rev. C</td></tr></table>'+
  '<h5>Anexos</h5><p>Se adjunta el certificado de calibración vigente del equipo de medida.</p>'+
  '<div class="sig"><div class="box">Técnico: J. Martínez</div><div class="box">Firma</div></div>',
 
@@ -1437,22 +1549,53 @@ var RPAGES=[
  '<tr><th>Resultado</th><td class="n ok">DENTRO</td></tr></table></div></div>'+
  '<p>El desnivel general de la máquina es de 0,34 mm sobre 18 puntos, con el punto más alto en +0,08 mm y el más bajo en −0,26 mm. Queda dentro de la tolerancia de 0,40 mm, si bien la caída se concentra en el extremo opuesto al cabezal.</p>',
 
- // 8 conclusiones
+ // 8 perpendicularidad
+ '<h4>Perpendicularidad del husillo respecto a la bancada</h4>'+
+ '<div class="two"><div class="imgph" style="height:160px">Desviación angular del eje del husillo</div>'+
+ '<div><table><tr><th>Entidad de referencia</th><td>PLANO_BANCADA_A</td></tr>'+
+ '<tr><th>Entidad comparada</th><td>EJE_HUSILLO</td></tr>'+
+ '<tr><th>Longitud de comprobación</th><td class="n">300 mm</td></tr>'+
+ '<tr><th>Tolerancia admisible</th><td class="n">0,08 mm</td></tr>'+
+ '<tr><th>Desviación medida</th><td class="n">0,06 mm</td></tr>'+
+ '<tr><th>Ángulo medido</th><td class="n">90,011°</td></tr>'+
+ '<tr><th>Resultado</th><td class="n ok">DENTRO</td></tr></table></div></div>'+
+ '<p>La perpendicularidad del eje del husillo respecto al plano de bancada presenta una desviación de 0,06 mm sobre 300 mm de comprobación, equivalente a 90,011 grados. Queda dentro de la tolerancia de 0,08 mm.</p>',
+
+ // 9 control de cotas
+ '<h4>Control de cotas</h4>'+
+ '<p>Cotas verificadas contra el plano 2200-A rev. C. Los valores medidos proceden directamente del archivo exportado por el software de medición.</p>'+
+ '__TABLA_COTAS__'+
+ '<p style="margin-top:10px">De las 10 cotas verificadas, 8 quedan dentro de tolerancia. La cota C-10 se sitúa en el límite superior admisible y la cota C-05, anchura de la guía en V, resulta fuera de tolerancia con +0,041 mm frente a los ± 0,030 mm especificados.</p>',
+
+ // 10 conclusiones
  '<h4>Conclusiones y recomendaciones</h4>'+
  '<table><tr><th>Control</th><th>Medido</th><th>Tolerancia</th><th>Resultado</th></tr>'+
  '<tr><td>Planitud de bancada</td><td class="n">0,21 mm</td><td class="n">0,25 mm</td><td class="n ok">DENTRO</td></tr>'+
  '<tr><td>Rectitud de guía longitudinal</td><td class="n">0,10 mm</td><td class="n">0,15 mm</td><td class="n ok">DENTRO</td></tr>'+
  '<tr><td>Paralelismo entre guías, vertical</td><td class="n">0,12 mm</td><td class="n">0,10 mm</td><td class="n no">FUERA</td></tr>'+
  '<tr><td>Perpendicularidad de husillo</td><td class="n">0,06 mm</td><td class="n">0,08 mm</td><td class="n ok">DENTRO</td></tr>'+
- '<tr><td>Nivelación general</td><td class="n">0,34 mm</td><td class="n">0,40 mm</td><td class="n ok">DENTRO</td></tr></table>'+
+ '<tr><td>Nivelación general</td><td class="n">0,34 mm</td><td class="n">0,40 mm</td><td class="n ok">DENTRO</td></tr>'+
+ '<tr><td>Control de cotas, C-05</td><td class="n">85,041 mm</td><td class="n">85,000 ± 0,030</td><td class="n no">FUERA</td></tr>'+
+ '<tr><td>Control de cotas, resto</td><td class="n">9 de 10</td><td class="n">plano 2200-A rev. C</td><td class="n ok">DENTRO</td></tr></table>'+
  '<h5>Conclusión</h5>'+
- '<p>La máquina se encuentra dentro de tolerancia en cuatro de los cinco controles verificados. El paralelismo de la guía en V en el plano vertical excede la tolerancia establecida en 0,02 mm.</p>'+
+ '<p>La máquina cumple en cuatro de los cinco controles geométricos y en 9 de las 10 cotas verificadas. Quedan dos desviaciones sobre el mismo elemento, la guía en V: el paralelismo en el plano vertical excede la tolerancia en 0,02 mm y su anchura la excede en 0,011 mm.</p>'+
  '<h5>Recomendaciones</h5>'+
- '<p>1. Corregir el apoyo del extremo opuesto al cabezal para recuperar el paralelismo vertical antes de la puesta en servicio.<br>'+
- '2. Repetir la verificación tras la corrección, limitada al control afectado.<br>'+
- '3. Programar un control geométrico anual, dado que la planitud de bancada muestra una tendencia creciente respecto a las intervenciones anteriores.</p>'+
+ '<p>1. Revisar la guía en V, que concentra las dos desviaciones detectadas, antes de la puesta en servicio.<br>'+
+ '2. Corregir el apoyo del extremo opuesto al cabezal para recuperar el paralelismo vertical.<br>'+
+ '3. Repetir la verificación tras la corrección, limitada a los controles afectados.<br>'+
+ '4. Vigilar la cota C-10, en el límite admisible, en la próxima intervención.<br>'+
+ '5. Programar un control geométrico anual, dado que la planitud de bancada muestra una tendencia creciente respecto a las intervenciones anteriores.</p>'+
  '<div class="sig"><div class="box">J. Martínez · Técnico de metrología</div><div class="box">Fecha: 12/05/2026</div></div>'
 ];
+
+function tablaCotasHTML(){
+  var h='<table class="tcotas" style="margin-top:10px"><tr><th>Cota</th><th class="desc">Descripción</th><th>Nominal</th><th>Tol.</th><th>Medido</th><th class="desc">Desv.</th><th>Resultado</th></tr>';
+  COTAS.forEach(function(r){
+    var cls = r[6]==="ok" ? "ok" : "no";
+    h += '<tr><td>'+r[0]+'</td><td class="desc">'+r[1]+'</td><td class="n">'+r[2]+'</td><td class="n">'+r[3]+'</td><td class="n">'+r[4]+'</td><td class="n desc">'+r[5]+'</td><td class="n '+cls+'">'+r[7].toUpperCase()+'</td></tr>';
+  });
+  return h+'</table>';
+}
 
 function openReport(){
   closeModal();
@@ -1461,7 +1604,7 @@ function openReport(){
   var m=el("div","rmodal");
   var h=el("div","mh");
   h.appendChild(el("h2",null,"Informe generado · vista previa"));
-  var tagm=pill("info","8 páginas"); tagm.style.marginLeft="10px"; h.appendChild(tagm);
+  var tagm=pill("info",RPAGES.length+" páginas"); tagm.style.marginLeft="10px"; h.appendChild(tagm);
   var x=el("button","x","✕"); x.addEventListener("click",closeModal); h.appendChild(x);
   m.appendChild(h);
 
@@ -1472,7 +1615,7 @@ function openReport(){
     var img=document.createElement("img"); img.src=LOGO; img.alt="Metrónica"; ph.appendChild(img);
     ph.appendChild(el("span","t","Informe dimensional"));
     p.appendChild(ph);
-    var rb=el("div","rb"); rb.innerHTML=inner; p.appendChild(rb);
+    var rb=el("div","rb"); rb.innerHTML=inner.replace("__TABLA_COTAS__", tablaCotasHTML()); p.appendChild(rb);
     var rf=el("div","rf");
     rf.appendChild(el("span",null,"Industrias Vellamar · Torno TP-2200 · VLM-2026-041"));
     rf.appendChild(el("span",null,"Página "+(i+1)+" de "+RPAGES.length));
@@ -1488,7 +1631,7 @@ function openReport(){
   var b1=el("button","btn","Descargar PDF");
   b1.addEventListener("click",function(){closeModal();toast("En la aplicación real se descargaría el PDF");});
   var b2=el("button","btn","Versión en inglés");
-  b2.addEventListener("click",function(){closeModal();toast("Se generaría la misma estructura traducida");});
+  b2.addEventListener("click",function(){openModal("idioma");});
   var b3=el("button","btn primary","Firmar y enviar");
   b3.addEventListener("click",function(){closeModal();toast("Informe firmado y enviado al cliente");});
   f.appendChild(b1);f.appendChild(b2);f.appendChild(b3);
