@@ -1729,10 +1729,14 @@ function lineChart(id,labels,values,opts){
   values.forEach(function(v,i){s.appendChild(mk("circle",{cx:x(i),cy:y(v),r:m?5:4,fill:"#fff",stroke:"var(--series)","stroke-width":2}));});
   var cross=mk("line",{x1:0,x2:0,y1:MT,y2:MT+ph,stroke:"#C8CDC9","stroke-width":1,"stroke-dasharray":"3 3",opacity:0});
   s.appendChild(cross);
+  // zona sensible: sin ella el puntero no encuentra nada que tocar sobre el hueco del grafico
+  var hot=mk("rect",{x:ML,y:MT-MT,width:pw,height:ph+MT,fill:"transparent","pointer-events":"all"});
+  s.appendChild(hot);
+  s.style.touchAction="pan-y";
   box.appendChild(s);
   var tip=el("div","tip");tip.hidden=true;wrap.appendChild(tip);
-  s.addEventListener("mousemove",function(ev){
-    var r=s.getBoundingClientRect(),px=(ev.clientX-r.left)/r.width*W;
+  function mover(cx){
+    var r=s.getBoundingClientRect(),px=(cx-r.left)/r.width*W;
     var i=Math.round((px-ML)/(pw/(values.length-1)));i=Math.max(0,Math.min(values.length-1,i));
     cross.setAttribute("x1",x(i));cross.setAttribute("x2",x(i));cross.setAttribute("opacity",1);
     tip.hidden=false;tip.innerHTML="";
@@ -1741,8 +1745,12 @@ function lineChart(id,labels,values,opts){
     row.appendChild(document.createTextNode("Horas"));row.appendChild(el("span","v",fmt(values[i],0)+" h"));
     tip.appendChild(row);
     tip.style.left=(x(i)/W*r.width)+"px";tip.style.top=(y(values[i])/H*r.height)+"px";
-  });
-  s.addEventListener("mouseleave",function(){tip.hidden=true;cross.setAttribute("opacity",0);});
+  }
+  function salir(){tip.hidden=true;cross.setAttribute("opacity",0);}
+  hot.addEventListener("pointermove",function(ev){mover(ev.clientX);});
+  hot.addEventListener("pointerdown",function(ev){mover(ev.clientX);});
+  s.addEventListener("pointerleave",salir);
+  wrap.addEventListener("pointerleave",salir);
 }
 
 function barChart(id,rows){
